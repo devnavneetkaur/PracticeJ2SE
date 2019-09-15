@@ -24,14 +24,17 @@ public class Prime {
 		while (startRange <= endRange) {
 			int i = 0;
 			boolean flag = false;
-			
+			if(startRange < 2) {
+				startRange++;
+				continue;
+			}
 			for (i = 2; i <= startRange / 2; i++) {
 				if (startRange % i == 0) {
 					flag = true;
 				break;
 			}
 			}
-			// System.out.println(Prime numbers :);
+		
 			if (flag == false) {
 				System.out.println(startRange);
 			}
