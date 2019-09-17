@@ -4,29 +4,29 @@ import java.util.Scanner;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
-public class ArithmaticalProgression {
+public class HarmonicProgression {
 
-	public static int[] printArithmaticProgression(int firstTerm, int diff, int rangeOfSeries) {
+	public static int[] printHarmonicProgression(int firstTerm, int diff, int rangeOfSeries) {
 		int arr[] = new int[rangeOfSeries];
 		int temp = firstTerm;
 
 		for (int i = 1; i <= rangeOfSeries; i++) {
 
 			arr[i - 1] = temp + (i - 1) * diff;
-			System.out.print(arr[i - 1] + "\t");
+			System.out.print("1/" + (arr[i - 1]) + "\t");
 		}
 
 		return arr;
 	}
 
-	public static boolean checkArithmaticProgression(int ap[]) {
+	public static boolean checkHarmonicProgression(double hp[]) {
 
-		int length = 0, diff = 0;
-
-		diff = ap[1] - ap[0];
-		length = ap.length;
+		int length = 0;
+		double diff = 0;
+		diff = hp[1] - hp[0];
+		length = hp.length;
 		for (int i = 2; i < length; i++) {
-			if (diff == (ap[i] - ap[i - 1])) {
+			if (diff == (hp[i] - hp[i - 1])) {
 				return true;
 			}
 		}
@@ -40,9 +40,9 @@ public class ArithmaticalProgression {
 		int firstTerm = 0, diff = 0, rangeOfSeries = 0, choice = 0, noOfElement;
 
 		while (true) {
-			System.out.println("1 : print Arithmatic Progression\n2 : Check Arithmatic progression");
+			System.out.println("1 : print Harmonic Progression\n2 : Check Harmonic progression");
 			System.out.println("Enter your choice ");
-			
+
 			try {
 				choice = scan.nextInt();
 				if (choice < 0) {
@@ -58,7 +58,7 @@ public class ArithmaticalProgression {
 			switch (choice) {
 			case 1:
 
-				System.out.println("\nPrint Arithmatic progression");
+				System.out.println("\nPrint Harmonic progression");
 				System.out.println("Enter first term ");
 				try {
 					firstTerm = scan.nextInt();
@@ -75,7 +75,7 @@ public class ArithmaticalProgression {
 					}
 					System.out.println("Enter n to print the series");
 					rangeOfSeries = scan.nextInt();
-					if(rangeOfSeries <= 0) {
+					if (rangeOfSeries <= 0) {
 						System.out.println("Negative numbers not allowed");
 						return;
 					}
@@ -83,7 +83,7 @@ public class ArithmaticalProgression {
 					System.out.println("Please enter valid input");
 					return;
 				}
-				printArithmaticProgression(firstTerm, diff, rangeOfSeries);
+				printHarmonicProgression(firstTerm, diff, rangeOfSeries);
 				break;
 
 			case 2:
@@ -102,21 +102,21 @@ public class ArithmaticalProgression {
 					scan.close();
 					return;
 				}
-				
+
 				if (noOfElement < 3) {
 					System.out.println("Please enter atleast 3 elements in series");
 					return;
 				}
-				int ap[] = new int[noOfElement];
+				double hp[] = new double[noOfElement];
 				System.out.println("Enter the series");
 				for (int index = 0; index < noOfElement; index++) {
-					ap[index] = scan.nextInt();
+					hp[index] = scan.nextInt();
 				}
-				checkFlag = checkArithmaticProgression(ap);
+				checkFlag = checkHarmonicProgression(hp);
 				if (checkFlag == true) {
-					System.out.println("Series is Arithmatic progression");
+					System.out.println("Series is Harmonic progression");
 				} else {
-					System.out.println("Series is not Arithmatic progression");
+					System.out.println("Series is not Harmonic progression");
 				}
 
 				break;

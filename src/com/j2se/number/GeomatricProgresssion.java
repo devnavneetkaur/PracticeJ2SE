@@ -2,47 +2,47 @@ package com.j2se.number;
 
 import java.util.Scanner;
 
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
+public class GeomatricProgresssion {
 
-public class ArithmaticalProgression {
-
-	public static int[] printArithmaticProgression(int firstTerm, int diff, int rangeOfSeries) {
+	public static void printGeomatricProgression(int firstTerm, int ratio, int rangeOfSeries) {
 		int arr[] = new int[rangeOfSeries];
 		int temp = firstTerm;
-
 		for (int i = 1; i <= rangeOfSeries; i++) {
 
-			arr[i - 1] = temp + (i - 1) * diff;
+			arr[i - 1] = temp * power(ratio, i - 1);
 			System.out.print(arr[i - 1] + "\t");
 		}
-
-		return arr;
 	}
 
-	public static boolean checkArithmaticProgression(int ap[]) {
+	public static int power(int ratio, int index) {
 
-		int length = 0, diff = 0;
+		int result = 1;
+		for (int i = 0; i < index; i++) {
+			result = result * ratio;
+		}
+		return result;
+	}
 
-		diff = ap[1] - ap[0];
-		length = ap.length;
-		for (int i = 2; i < length; i++) {
-			if (diff == (ap[i] - ap[i - 1])) {
+	public static boolean checkGeomatricProgression(int[] gp) {
+
+		int diff = 0, length = 0;
+		length = gp.length;
+		diff = gp[1] / gp[0];
+		for (int j = 2; j < length; j++) {
+			if (diff == (gp[j] / gp[j - 1])) {
 				return true;
 			}
 		}
 		return false;
-
 	}
 
 	public static void main(String[] args) {
-
 		Scanner scan = new Scanner(System.in);
-		int firstTerm = 0, diff = 0, rangeOfSeries = 0, choice = 0, noOfElement;
-
+		int firstTerm = 0, ratio = 0, rangeOfSeries = 0, choice = 0, noOfElement;
 		while (true) {
-			System.out.println("1 : print Arithmatic Progression\n2 : Check Arithmatic progression");
+			System.out.println("1 : print Geomatric Progression\n2 : Check Geomatric progression");
 			System.out.println("Enter your choice ");
-			
+
 			try {
 				choice = scan.nextInt();
 				if (choice < 0) {
@@ -55,10 +55,8 @@ public class ArithmaticalProgression {
 				scan.close();
 				return;
 			}
-			switch (choice) {
-			case 1:
-
-				System.out.println("\nPrint Arithmatic progression");
+			if (choice == 1) {
+				System.out.println("\nPrint Geomatric progression");
 				System.out.println("Enter first term ");
 				try {
 					firstTerm = scan.nextInt();
@@ -67,26 +65,28 @@ public class ArithmaticalProgression {
 						scan.close();
 						return;
 					}
-					System.out.println("Enter difference");
-					diff = scan.nextInt();
-					if (diff < 0) {
+					System.out.println("Enter ratio");
+					ratio = scan.nextInt();
+					if (ratio < 0) {
 						System.out.println("Negative numbers not allowed");
+						scan.close();
 						return;
 					}
 					System.out.println("Enter n to print the series");
 					rangeOfSeries = scan.nextInt();
-					if(rangeOfSeries <= 0) {
+					if (rangeOfSeries <= 0) {
 						System.out.println("Negative numbers not allowed");
+						scan.close();
 						return;
 					}
 				} catch (Exception e) {
 					System.out.println("Please enter valid input");
+					scan.close();
 					return;
 				}
-				printArithmaticProgression(firstTerm, diff, rangeOfSeries);
-				break;
+				printGeomatricProgression(firstTerm, ratio, rangeOfSeries);
 
-			case 2:
+			} else if (choice == 2) {
 				System.out.println("Enter the range of series");
 				noOfElement = scan.nextInt();
 				boolean checkFlag = false;
@@ -102,33 +102,32 @@ public class ArithmaticalProgression {
 					scan.close();
 					return;
 				}
-				
+
 				if (noOfElement < 3) {
 					System.out.println("Please enter atleast 3 elements in series");
+					scan.close();
 					return;
 				}
-				int ap[] = new int[noOfElement];
+				int gp[] = new int[noOfElement];
 				System.out.println("Enter the series");
 				for (int index = 0; index < noOfElement; index++) {
-					ap[index] = scan.nextInt();
+					gp[index] = scan.nextInt();
 				}
-				checkFlag = checkArithmaticProgression(ap);
+				checkFlag = checkGeomatricProgression(gp);
 				if (checkFlag == true) {
-					System.out.println("Series is Arithmatic progression");
+					System.out.println("Series is Geomatric progression");
 				} else {
-					System.out.println("Series is not Arithmatic progression");
+					System.out.println("Series is not Geomatric progression");
 				}
 
-				break;
-
-			default:
+			} else {
 				System.out.println("Wrong choice");
-				break;
+				return;
 			}
-			System.out.println("\nDo you want to try again Y / N");
+
+			System.out.println("\nDo you want to continue Y / N");
 			if (scan.next().contentEquals("N"))
 				break;
 		}
 	}
-
 }
