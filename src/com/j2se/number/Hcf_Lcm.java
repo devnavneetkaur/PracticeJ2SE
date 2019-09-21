@@ -30,12 +30,32 @@ public class Hcf_Lcm {
 		return resLCM;
 
 	}
+	/* -------------------------------------------------- */
+
+	public static int findGCD(int a, int b) {
+		if (a != 0) {
+
+			return findGCD(b % a, a);
+		}
+		return b;
+	}
+
+	public static int calculateHCF(int[] hcf, int size) {
+
+		int result = hcf[0];
+		for (int i = 1; i < size; i++) {
+			result = findGCD(hcf[i], result);
+
+		}
+		return result;
+
+	}
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int choice = 0;
 		while (true) {
-			System.out.println("1 : Check HCF\n2 : Check LCM");
+			System.out.println("1 : Check HCF\n2 : Check LCM\n3: Check HCF of any numbers");
 			System.out.println("Enter your choice ");
 
 			try {
@@ -95,6 +115,45 @@ public class Hcf_Lcm {
 				}
 				resultLCM = calculateLCM(number1, number2);
 				System.out.println("LCM of " + number1 + "," + number2 + " is " + resultLCM);
+				break;
+
+			case 3:
+				System.out.println("Enter the no of elements you want for HCF calculation");
+				int size = 0, resulthcf = 0;
+				size = scan.nextInt();
+				int hcf[] = new int[size];
+				try {
+
+					if (size <= 0) {
+						System.out.println("There should be atleast 2 elements for hcf calculation");
+						scan.close();
+						return;
+					}
+					System.out.println("Enter the numbers");
+					for (int index = 0; index < size; index++) {
+
+						try {
+
+							hcf[index] = scan.nextInt();
+							if (hcf[index] <= 0) {
+								System.out.println("Number should be > 0");
+								scan.close();
+								return;
+							}
+						} catch (Exception ex) {
+							System.out.println("Please enter valid input");
+							scan.close();
+							return;
+						}
+					}
+
+				} catch (Exception e) {
+					System.out.println("Please enter valid input");
+					scan.close();
+					return;
+				}
+				resulthcf = calculateHCF(hcf, size);
+				System.out.println("Result is " + resulthcf);
 				break;
 			default:
 				System.out.println("Wrong choice");
