@@ -1,8 +1,8 @@
 package com.j2se.strings;
 
-import java.io.ObjectInputStream.GetField;
+
 import java.util.Scanner;
-import java.util.Stack;
+
 
 public class ChangeCase {
 
