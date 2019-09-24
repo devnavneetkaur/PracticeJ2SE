@@ -61,12 +61,21 @@ public class ChangeCase {
 		return resultStr;
 
 	}
+	
+	public static boolean noAlphabet(char charAt) {
+		
+		
+		if (((charAt >= 'a') && (charAt <= 'z')) || ((charAt >= 'A') && (charAt <= 'Z')) || ((charAt >= '0') && (charAt <= '9'))) {
+			return false;
+		} 
+		return true ;
+	}
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		String str = null;
 		String retStr = null;
-		boolean flag = false;
+		boolean flag = false, retFlag = false;
 
 		do {
 			if (flag) {
@@ -97,6 +106,9 @@ public class ChangeCase {
 			System.out.println("String after converting into Uppercase to Lowercase and vice-versa");
 			System.out.println(retStr);
 			
+			retFlag = noAlphabet(str.charAt(0));
+			System.out.println("" + retFlag);
+			
 			flag = true;
 
 		} while (true);
@@ -106,5 +118,7 @@ public class ChangeCase {
 		scan.close();
 
 	}
+
+	
 
 }
