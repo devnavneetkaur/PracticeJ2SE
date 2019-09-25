@@ -29,14 +29,16 @@ public class Amstrong {
 			number = scan.nextInt();
 			if (number < 0) {
 				System.out.println("Negative number not allowed");
+				scan.close();
 				return;
 			}
 		} catch (Exception e) {
 			System.out.println("Please enter valid integer number");
+			scan.close();
 			return;
 		}
 		checkAmstrong(number);
-
+		scan.close();
 	}
 
 }
