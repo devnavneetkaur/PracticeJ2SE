@@ -53,7 +53,7 @@ public class Rotate {
 			endIndex = length;
 		}
 		for (int i = 0; i < endIndex; i++) {
-			if (i >= index - 1) {
+			if (i > index - 1) {
 				result = result + str.charAt(i);
 			} else {
 				continue;
