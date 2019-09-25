@@ -76,25 +76,74 @@ public class AscendingNumber {
 
 	}
 
+	/*--------------------------------------------*/
+
+	public static char[] sortStr(char[] str) {
+
+		char temp;
+		char result[] = new char[str.length];
+
+		for (int i = 0; i < str.length; i++) {
+			for (int j = i + 1; j < str.length; j++) {
+
+				if (str[i] > str[j]) {
+
+					temp = str[j];
+					str[j] = str[i];
+					str[i] = temp;
+				}
+			}
+
+		}
+		for (int i = 0; i < str.length; i++) {
+			result[i] = str[i];
+
+		}
+		return result;
+	}
+	/*---------------------------------------------*/
+
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
 		int number = 0;
+		String str = null;
+
 		System.out.println("convert given number in ascending order");
 		System.out.println("Enter number");
 		try {
 			number = scan.nextInt();
 			if (number < 0) {
 				System.out.println("Negative numbers are not allowed");
+				scan.close();
 				return;
 			}
 
 		} catch (Exception e) {
 			System.out.println("Please enter valid number");
+			scan.close();
+
 			return;
 		}
 		ascendingNumber(number);
 		decendingNumber(number);
+
+		System.out.println("Enter the string you want to sort");
+		str = scan.next();
+		char strArr[] = new char[str.length()];
+		char retStr[] = new char[str.length()];
+
+		for (int index = 0; index < str.length(); index++) {
+
+			strArr[index] = str.charAt(index);
+
+		}
+
+		System.out.println("After sorting string is ");
+		for (int index1 = 0; index1 < retStr.length; index1++)
+			System.out.print(retStr[index1]);
+
+		scan.close();
 	}
 
 }
