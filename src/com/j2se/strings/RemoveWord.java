@@ -82,7 +82,6 @@ public class RemoveWord {
 	private static int frequencyOfSubStr(String str, String rmvWord) {
 
 		int tempIndex = 0, i = 0, j = 0, count = 0;
-		String result = new String();
 
 		for (i = 0; i < str.length(); i++) {
 			tempIndex = i;
@@ -131,7 +130,7 @@ public class RemoveWord {
 			}
 			retStr = removeWord(str, rmvWord);
 			System.out.println("String after removing substring word is " + retStr);
-			
+
 			retStr = removeWordStr(str, rmvWord);
 			System.out.println("String after removing is " + retStr);
 
