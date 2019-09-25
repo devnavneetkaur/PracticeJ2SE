@@ -28,6 +28,7 @@ public class SumOfAllDigits {
 				System.out.println("Do you want to continue ?");
 				str = scan.nextLine();
 				if (str.contentEquals("N"))
+					scan.close();
 					break;
 			}
 			System.out.println("Enter string");
