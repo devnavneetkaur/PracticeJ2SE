@@ -2,7 +2,7 @@ package com.j2se.strings;
 
 import java.util.Scanner;
 
-public class VowelsConsonts {
+public class VowelsConsonants {
 
 	public static int[] Count(String str) {
 		int vowelCount = 0, consonantCount = 0;
@@ -38,6 +38,7 @@ public class VowelsConsonts {
 				System.out.println("Do you want to continue ?");
 				str = scan.nextLine();
 				if (str.contentEquals("N"))
+					scan.close();
 					break;
 			}
 			System.out.println("Enter string");
