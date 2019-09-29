@@ -103,6 +103,8 @@ public class AscendingNumber {
 	}
 	/*---------------------------------------------*/
 
+	
+
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
@@ -138,6 +140,8 @@ public class AscendingNumber {
 			strArr[index] = str.charAt(index);
 
 		}
+
+		retStr = sortStr(strArr);
 
 		System.out.println("After sorting string is ");
 		for (int index1 = 0; index1 < retStr.length; index1++)

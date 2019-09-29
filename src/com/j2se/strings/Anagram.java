@@ -13,6 +13,7 @@ public class Anagram {
 			System.out.println("the length of both the strings are different");
 			return false;
 		}
+		
 		boolean resultFlag = false;
 
 		String temp1 = new String();
