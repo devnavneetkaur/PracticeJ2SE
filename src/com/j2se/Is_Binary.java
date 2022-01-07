@@ -1,4 +1,5 @@
 package com.j2se;
+
 import java.util.Scanner;
 
 public class Is_Binary {
